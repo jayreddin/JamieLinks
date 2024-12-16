@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayreddin | Links</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" type="image/x-icon" />
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Core theme CSS -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <!-- Parallax Pixel Background Animation -->
+    <section class="animated-background">
+      <div id="stars1"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+    </section>
+    <!-- End of Parallax Pixel Background Animation -->
+
+    <div id="profile-container">
+      <a id="profilePicture" href="#popup">
+        <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Profile Picture">
+      </a>
+      <div id="userName">
+        Jayreddin
+      </div>
+    </div>
+
+    <div class="overlay" id="popup">
+      <div class="popup">
+        <div class="popup-photo">
+          <a href="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" target="_blank">
+            <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Profile Picture">
+          </a>
+        </div>
+        <div class="popup-quote">
+          Here for a good time, not a long time!!
+        </div>
+        <a class="popup-close" onclick="history.back()">&times;</a>
+      </div>
+    </div>
+
+    <div id="links">
+      <a class="link" id="about-me-btn" onclick="toggleAboutMe()">
+        <i class="fas fa-user">&nbsp;</i>About Me
+      </a>
+      <div id="about-me-container" style="display: none;" class="link about-me-text">
+        Hi, I'm Jamie! A passionate developer and handyman from Dublin. I love creating innovative solutions and exploring new technologies. When I'm not coding, you'll find me working on home improvement projects or enjoying the outdoors.
+      </div>
+      <a class="link" href="https://www.tiktok.com/@jay.jay_2.0?_t=8lcELqIze6L&_r=1" target="_blank">
+        <i class="fab fa-tiktok">&nbsp;</i>TikTok
+      </a>
+      <a class="link" href="https://youtube.com/@jayreddin2.0?si=LDdKo1FgpxFNMhUT" target="_blank">
+        <i class="fab fa-youtube">&nbsp;</i>Youtube
+      </a>
+      <a class="link" href="https://m.facebook.com/jayreddin89" target="_blank">
+        <i class="fab fa-facebook">&nbsp;</i>Facebook
+      </a>
+      <a class="link" href="https://www.instagram.com/jayreddin" target="_blank">
+        <i class="fab fa-instagram">&nbsp;</i>Instagram
+      </a>
+      <a class="link" href="https://www.facebook.com/Handyman.Dublin.Jamie" target="_blank">
+        <i class="fab fa-facebook">&nbsp;</i>Facebook Nixer Page
+      </a>
+      <a class="link" id="github-projects-btn" onclick="toggleGithubProjects()">
+        <i class="fab fa-github">&nbsp;</i>Github Projects
+      </a>
+      <div id="github-projects-container" style="display: none;">
+        <a class="link github-project" href="https://jayreddin.github.io/JamieAirToWater/" id="project1">Air To Water Search</a>
+        <a class="link github-project" href="https://jayreddin.github.io/PortfolioJamie/" id="project2">My Portfolio</a>
+        <a class="link github-project" href="https://github.com/jayreddin?tab=repositories" id="project3">All My Repositories</a>
+      </div>
+    </div>
+
+    <div id="hashtag">
+      #Be Kind 😂
+    </div>
+    <script>
+      function toggleGithubProjects() {
+        var githubProjectsContainer = document.getElementById("github-projects-container");
+        if (githubProjectsContainer.style.display === "none") {
+          githubProjectsContainer.style.display = "block";
+        } else {
+          githubProjectsContainer.style.display = "none";
+        }
+      }
+
+      function toggleAboutMe() {
+        var aboutMeContainer = document.getElementById("about-me-container");
+        if (aboutMeContainer.style.display === "none") {
+          aboutMeContainer.style.display = "block";
+        } else {
+          aboutMeContainer.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
