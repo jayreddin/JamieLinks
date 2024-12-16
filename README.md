@@ -1,7 +1,7 @@
 
 <h1>
   
-[View Links Here:](https://jayreddin.github.io/Links/)
+[View Links Here:](https://jayreddin.github.io/JamieLinks/)
 
 <h1/>
 
