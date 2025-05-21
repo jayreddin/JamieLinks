@@ -18,6 +18,33 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleElement('github-projects-container');
     });
     
+    // Add skills showcase toggle button event listener
+    const skillsShowcaseBtn = document.getElementById('skills-showcase-btn');
+    if (skillsShowcaseBtn) {
+        skillsShowcaseBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleElement('skills-showcase-container');
+        });
+    }
+
+    // Add blog section toggle button event listener
+    const blogSectionBtn = document.getElementById('blog-section-btn');
+    if (blogSectionBtn) {
+        blogSectionBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleElement('blog-section-container');
+        });
+    }
+
+    // Add testimonials toggle button event listener
+    const testimonialsBtn = document.getElementById('testimonials-btn');
+    if (testimonialsBtn) {
+        testimonialsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleElement('testimonials-container');
+        });
+    }
+    
     // Add smooth transition to popup close action
     const popupClose = document.querySelector('.popup-close');
     if (popupClose) {

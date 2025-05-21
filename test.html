@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Tests for Skills Showcase</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css">
+    <!-- Custom styles for test elements if needed, and to ensure visibility for testing -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ensure test elements are on the page but not necessarily visible to the user during tests */
+        #qunit-fixture {
+            position: absolute;
+            top: -10000px;
+            left: -10000px;
+            width: 1000px;
+            height: 1000px;
+            box-sizing: border-box;
+        }
+        /* Make sure containers are styled enough to be affected by script.js, like about-me-text */
+        .link.about-me-text {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFF;
+            text-align: left;
+            padding: 15px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            max-height: 0; /* Initially hidden for transition */
+            overflow: hidden;
+            opacity: 0; /* Initially hidden for transition */
+            display: none; /* Explicitly set for initial state test */
+        }
+        .link.about-me-text.visible {
+             max-height: 500px; /* Or enough to show content */
+             opacity: 1;
+             display: block;
+        }
+    </style>
+</head>
+<body class="dark"> <!-- Assuming dark theme is default, script.js might interact with this -->
+
+    <!-- QUnit display elements -->
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+        <!-- Minimal HTML structure for testing -->
+        <!-- Buttons that script.js attaches listeners to -->
+        <a id="profilePicture" href="#"></a>
+        <a class="link" id="about-me-btn" href="#">About Me</a>
+        <div id="about-me-container" style="display: none;" class="link about-me-text">About me content</div>
+
+        <a class="link" id="github-projects-btn" href="#">Github Projects</a>
+        <div id="github-projects-container" style="display: none;">Github projects content</div>
+        
+        <a class="link" id="contact-form-btn" href="#">Contact Me</a>
+        <div id="contact-form-container" style="display: none;" class="link about-me-text">Contact form content</div>
+
+        <a class="link" id="share-page-btn" href="#">Share This Page</a>
+        <div id="share-buttons-container" style="display: none;" class="link about-me-text">Share buttons content</div>
+
+        <a class="link" id="music-player-btn" href="#">My Favorite Tunes</a>
+        <div id="music-player-container" style="display: none;" class="link about-me-text">Music player content</div>
+        
+        <!-- Elements for Skills Showcase feature -->
+        <a class="link" id="skills-showcase-btn" href="#">
+            <i class="fas fa-code">&nbsp;</i>Skills Showcase
+        </a>
+        <div id="skills-showcase-container" style="display: none;" class="link about-me-text">
+            <div class="skill"><i class="fab fa-html5"></i> HTML</div>
+            <div class="skill"><i class="fab fa-css3-alt"></i> CSS</div>
+        </div>
+
+        <!-- Elements for Blog Section feature -->
+        <a class="link" id="blog-section-btn" href="#">
+            <i class="fas fa-feather-alt">&nbsp;</i>My Blog
+        </a>
+        <div id="blog-section-container" style="display: none;" class="link about-me-text">
+            <div class="blog-post">
+                <h3>My First Blog Post</h3>
+                <p class="post-date">October 26, 2023</p>
+                <p>This is the content of my first blog post.</p>
+                <a href="#" class="read-more-link">Read more...</a>
+            </div>
+        </div>
+
+        <!-- Elements for Testimonials Section feature -->
+        <a class="link" id="testimonials-btn" href="#">
+            <i class="fas fa-comment-dots">&nbsp;</i>Testimonials
+        </a>
+        <div id="testimonials-container" style="display: none;" class="link about-me-text">
+            <div class="testimonial">
+                <p class="testimonial-text">"This is a test testimonial."</p>
+                <p class="testimonial-author">- Test Author</p>
+            </div>
+        </div>
+        <footer></footer> <!-- script.js appends visit counter to footer -->
+    </div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script>
+    <!-- Main script file - ensure path is correct if test.html is not in root -->
+    <script src="script.js"></script>
+
+    <script>
+        QUnit.module('Skills Showcase Feature', function(hooks) {
+            // Use hooks.beforeEach to reset state if necessary, e.g., hide the container
+            hooks.beforeEach(function() {
+                const skillsContainer = document.getElementById('skills-showcase-container');
+                if (skillsContainer) {
+                    skillsContainer.style.display = 'none';
+                    skillsContainer.style.opacity = '0';
+                    skillsContainer.classList.remove('visible');
+                }
+                // Ensure the button exists
+                const skillsBtn = document.getElementById('skills-showcase-btn');
+                if (!skillsBtn) {
+                    throw new Error('Skills showcase button not found in qunit-fixture');
+                }
+            });
+
+            QUnit.test('Initial State: Skills container should be hidden', function(assert) {
+                const skillsContainer = document.getElementById('skills-showcase-container');
+                assert.ok(skillsContainer !== null, 'Skills container element exists');
+                const isHidden = skillsContainer.style.display === 'none' || !skillsContainer.classList.contains('visible');
+                assert.ok(isHidden, 'Skills container is hidden by default (display: none or no "visible" class).');
+                // Also check opacity if that's part of the hiding mechanism from the start
+                assert.equal(skillsContainer.style.opacity, '0', 'Skills container is transparent by default.');
+            });
+
+            QUnit.test('Toggle Visibility: Click to show and hide skills container', function(assert) {
+                const done = assert.async(); // For handling asynchronous operations (like setTimeout in toggleElement)
+                
+                const skillsBtn = document.getElementById('skills-showcase-btn');
+                const skillsContainer = document.getElementById('skills-showcase-container');
+                assert.ok(skillsBtn !== null, 'Skills button exists');
+                assert.ok(skillsContainer !== null, 'Skills container exists');
+
+                // --- First Click: Show ---
+                skillsBtn.click();
+
+                // Wait for styles to be applied by toggleElement (opacity transition)
+                setTimeout(function() {
+                    assert.equal(skillsContainer.style.display, 'block', 'After first click, skills container display should be "block".');
+                    assert.equal(skillsContainer.style.opacity, '1', 'After first click, skills container opacity should be "1".');
+                    assert.ok(skillsContainer.classList.contains('visible'), 'After first click, skills container should have "visible" class.');
+
+                    // --- Second Click: Hide ---
+                    skillsBtn.click();
+
+                    setTimeout(function() {
+                        // The script first sets opacity to 0, then after 300ms sets display to none.
+                        // We test the state immediately after the opacity transition should have started.
+                        assert.equal(skillsContainer.style.opacity, '0', 'After second click, skills container opacity should be "0".');
+                        assert.notOk(skillsContainer.classList.contains('visible'), 'After second click, skills container should not have "visible" class.');
+
+                        // Wait for the display:none transition
+                        setTimeout(function() {
+                            assert.equal(skillsContainer.style.display, 'none', 'After second click and delay, skills container display should be "none".');
+                            done(); // Signal QUnit that asynchronous operations are complete
+                        }, 310); // A bit more than 300ms to be safe
+                    }, 100); // Wait for opacity to be set to 0 by the script
+                }, 100); // A bit more than 10ms for the first transition to kick in
+            });
+        });
+
+        QUnit.module('Blog Section Feature', function(hooks) {
+            hooks.beforeEach(function() {
+                const blogContainer = document.getElementById('blog-section-container');
+                if (blogContainer) {
+                    blogContainer.style.display = 'none';
+                    blogContainer.style.opacity = '0';
+                    blogContainer.classList.remove('visible');
+                }
+                const blogBtn = document.getElementById('blog-section-btn');
+                if (!blogBtn) {
+                    throw new Error('Blog section button not found in qunit-fixture');
+                }
+            });
+
+            QUnit.test('Initial State: Blog container should be hidden', function(assert) {
+                const blogContainer = document.getElementById('blog-section-container');
+                assert.ok(blogContainer !== null, 'Blog container element exists');
+                const isHidden = blogContainer.style.display === 'none' || !blogContainer.classList.contains('visible');
+                assert.ok(isHidden, 'Blog container is hidden by default (display: none or no "visible" class).');
+                assert.equal(blogContainer.style.opacity, '0', 'Blog container is transparent by default.');
+            });
+
+            QUnit.test('Toggle Visibility: Click to show and hide blog container', function(assert) {
+                const done = assert.async();
+                
+                const blogBtn = document.getElementById('blog-section-btn');
+                const blogContainer = document.getElementById('blog-section-container');
+                assert.ok(blogBtn !== null, 'Blog button exists');
+                assert.ok(blogContainer !== null, 'Blog container exists');
+
+                // --- First Click: Show ---
+                blogBtn.click();
+
+                setTimeout(function() {
+                    assert.equal(blogContainer.style.display, 'block', 'After first click, blog container display should be "block".');
+                    assert.equal(blogContainer.style.opacity, '1', 'After first click, blog container opacity should be "1".');
+                    assert.ok(blogContainer.classList.contains('visible'), 'After first click, blog container should have "visible" class.');
+
+                    // --- Second Click: Hide ---
+                    blogBtn.click();
+
+                    setTimeout(function() {
+                        assert.equal(blogContainer.style.opacity, '0', 'After second click, blog container opacity should be "0".');
+                        assert.notOk(blogContainer.classList.contains('visible'), 'After second click, blog container should not have "visible" class.');
+
+                        setTimeout(function() {
+                            assert.equal(blogContainer.style.display, 'none', 'After second click and delay, blog container display should be "none".');
+                            done(); 
+                        }, 310); // Wait for display:none transition
+                    }, 100); // Wait for opacity to be set to 0
+                }, 100); // Wait for first transition
+            });
+        });
+
+        QUnit.module('Testimonials Section Feature', function(hooks) {
+            hooks.beforeEach(function() {
+                const testimonialsContainer = document.getElementById('testimonials-container');
+                if (testimonialsContainer) {
+                    testimonialsContainer.style.display = 'none';
+                    testimonialsContainer.style.opacity = '0';
+                    testimonialsContainer.classList.remove('visible');
+                }
+                const testimonialsBtn = document.getElementById('testimonials-btn');
+                if (!testimonialsBtn) {
+                    throw new Error('Testimonials button not found in qunit-fixture');
+                }
+            });
+
+            QUnit.test('Initial State: Testimonials container should be hidden', function(assert) {
+                const testimonialsContainer = document.getElementById('testimonials-container');
+                assert.ok(testimonialsContainer !== null, 'Testimonials container element exists');
+                const isHidden = testimonialsContainer.style.display === 'none' || !testimonialsContainer.classList.contains('visible');
+                assert.ok(isHidden, 'Testimonials container is hidden by default (display: none or no "visible" class).');
+                assert.equal(testimonialsContainer.style.opacity, '0', 'Testimonials container is transparent by default.');
+            });
+
+            QUnit.test('Toggle Visibility: Click to show and hide testimonials container', function(assert) {
+                const done = assert.async();
+                
+                const testimonialsBtn = document.getElementById('testimonials-btn');
+                const testimonialsContainer = document.getElementById('testimonials-container');
+                assert.ok(testimonialsBtn !== null, 'Testimonials button exists');
+                assert.ok(testimonialsContainer !== null, 'Testimonials container exists');
+
+                // --- First Click: Show ---
+                testimonialsBtn.click();
+
+                setTimeout(function() {
+                    assert.equal(testimonialsContainer.style.display, 'block', 'After first click, testimonials container display should be "block".');
+                    assert.equal(testimonialsContainer.style.opacity, '1', 'After first click, testimonials container opacity should be "1".');
+                    assert.ok(testimonialsContainer.classList.contains('visible'), 'After first click, testimonials container should have "visible" class.');
+
+                    // --- Second Click: Hide ---
+                    testimonialsBtn.click();
+
+                    setTimeout(function() {
+                        assert.equal(testimonialsContainer.style.opacity, '0', 'After second click, testimonials container opacity should be "0".');
+                        assert.notOk(testimonialsContainer.classList.contains('visible'), 'After second click, testimonials container should not have "visible" class.');
+
+                        setTimeout(function() {
+                            assert.equal(testimonialsContainer.style.display, 'none', 'After second click and delay, testimonials container display should be "none".');
+                            done(); 
+                        }, 310); // Wait for display:none transition
+                    }, 100); // Wait for opacity to be set to 0
+                }, 100); // Wait for first transition
+            });
+        });
+    </script>
+</body>
+</html>

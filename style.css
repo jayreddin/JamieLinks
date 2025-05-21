@@ -559,6 +559,94 @@ body.light {
     font-style: italic;
 }
 
+/* Skills Showcase Styles */
+#skills-showcase-container .skill {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    margin: 5px 0;
+    border-bottom: 1px solid var(--semiTransparentBgHover);
+}
+
+#skills-showcase-container .skill:last-child {
+    border-bottom: none;
+}
+
+#skills-showcase-container .skill i {
+    margin-right: 10px;
+    color: var(--accentColor); /* Or a specific color for icons */
+    width: 20px; /* Ensure icons align well */
+    text-align: center;
+}
+
+/* Blog Section Styles */
+#blog-section-container .blog-post {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--semiTransparentBgHover);
+}
+
+#blog-section-container .blog-post:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#blog-section-container .blog-post h3 {
+    color: var(--accentColor);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+#blog-section-container .blog-post .post-date {
+    font-size: 0.8rem;
+    color: var(--accentColor);
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+#blog-section-container .blog-post p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+#blog-section-container .blog-post .read-more-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--accentColor);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#blog-section-container .blog-post .read-more-link:hover {
+    opacity: 0.8;
+}
+
+/* Testimonials Section Styles */
+#testimonials-container .testimonial {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid var(--accentColor);
+    font-style: italic;
+}
+
+#testimonials-container .testimonial:last-child {
+    margin-bottom: 0;
+}
+
+#testimonials-container .testimonial-text {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+#testimonials-container .testimonial-author {
+    text-align: right;
+    font-weight: bold;
+    font-style: normal; /* Overriding italic from .testimonial if needed */
+    opacity: 0.9;
+}
+
 /* Visit Counter Styles */
 #visit-counter {
     margin-top: 10px;
