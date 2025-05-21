@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IE">
   <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ34929Q93"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YZ34929Q93');
-</script>
-    <!-- Google Analytics Tag -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WH4LJLNW');</script>
+    <!-- End Google Tag Manager -->
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WH4LJLNW');</script>
-<!-- End Google Tag Manager -->
+    <meta name="description" content="Jayreddin's personal links page - connecting to social media and projects">
+    <meta name="keywords" content="jayreddin, jamie, dublin, developer, handyman, links">
     
     <title>Jayreddin | Links</title>
-    <!-- Favicon -->
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" type="image/x-icon" />
+    
+    <!-- Favicon - downloaded locally -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    
     <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <!-- Core theme CSS -->
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script> 
@@ -35,9 +29,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WH4LJLNW"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WH4LJLNW"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     
     <!-- Parallax Pixel Background Animation -->
     <section class="animated-background">
@@ -47,63 +41,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
     <!-- End of Parallax Pixel Background Animation -->
 
-    <div id="profile-container">
-      <a id="profilePicture" href="#popup">
-        <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Profile Picture">
-      </a>
-      <div id="userName">
-        Jayreddin
-      </div>
-    </div>
-
-    <div class="overlay" id="popup">
-      <div class="popup">
-        <div class="popup-photo">
-          <a href="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" target="_blank">
-            <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Profile Picture">
-          </a>
+    <header>
+      <div id="profile-container">
+        <a id="profilePicture" href="#popup">
+          <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Jamie's profile portrait - developer from Dublin" width="150" height="150">
+        </a>
+        <div id="userName">
+          Jayreddin
         </div>
-        <div class="popup-quote">
-          Here for a good time, not a long time!!
+      </div>
+    </header>
+
+    <main>
+      <div class="overlay" id="popup">
+        <div class="popup">
+          <div class="popup-photo">
+            <a href="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" target="_blank" rel="noopener noreferrer">
+              <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Jamie's full profile portrait" width="400" height="400">
+            </a>
+          </div>
+          <div class="popup-quote">
+            Here for a good time, not a long time!!
+          </div>
+          <a class="popup-close" onclick="history.back()">&times;</a>
         </div>
-        <a class="popup-close" onclick="history.back()">&times;</a>
       </div>
-    </div>
 
-    <div id="links">
-      <a class="link" id="about-me-btn" onclick="toggleAboutMe()">
-        <i class="fas fa-user">&nbsp;</i>About Me
-      </a>
-      <div id="about-me-container" style="display: none;" class="link about-me-text">
-        Hi, I'm Jamie! A passionate developer and handyman from Dublin. I love creating innovative solutions and exploring new technologies. When I'm not coding, you'll find me working on home improvement projects or enjoying the outdoors.
+      <div id="links">
+        <a class="link" id="about-me-btn" onclick="toggleElement('about-me-container')">
+          <i class="fas fa-user">&nbsp;</i>About Me
+        </a>
+        <div id="about-me-container" style="display: none;" class="link about-me-text">
+          Hi, I'm Jamie! A passionate developer and handyman from Dublin. I love creating innovative solutions and exploring new technologies. When I'm not coding, you'll find me working on home improvement projects or sharing DIY tips online. Feel free to connect with me through any of my social media platforms or check out my GitHub projects!
+        </div>
+        <a class="link" href="https://www.tiktok.com/@jay.jay_2.0?_t=8lcELqIze6L&_r=1" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-tiktok">&nbsp;</i>TikTok
+        </a>
+        <a class="link" href="https://youtube.com/@jayreddin2.0?si=LDdKo1FgpxFNMhUT" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube">&nbsp;</i>Youtube
+        </a>
+        <a class="link" href="https://m.facebook.com/jayreddin89" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook">&nbsp;</i>Facebook
+        </a>
+        <a class="link" href="https://www.instagram.com/jayreddin" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram">&nbsp;</i>Instagram
+        </a>
+        <a class="link" href="https://www.facebook.com/Handyman.Dublin.Jamie" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook">&nbsp;</i>Facebook Nixer Page
+        </a>
+        <a class="link" id="github-projects-btn" onclick="toggleElement('github-projects-container')">
+          <i class="fab fa-github">&nbsp;</i>Github Projects
+        </a>
+        <div id="github-projects-container" style="display: none;">
+          <a class="link github-project" href="https://jayreddin.github.io/JamieAirToWater/" target="_blank" rel="noopener noreferrer" id="project1">Air To Water Search</a>
+          <a class="link github-project" href="https://jayreddin.github.io/PortfolioJamie/" target="_blank" rel="noopener noreferrer" id="project2">My Portfolio</a>
+          <a class="link github-project" href="https://github.com/jayreddin?tab=repositories" target="_blank" rel="noopener noreferrer" id="project3">All My Repositories</a>
+        </div>
       </div>
-      <a class="link" href="https://www.tiktok.com/@jay.jay_2.0?_t=8lcELqIze6L&_r=1" target="_blank">
-        <i class="fab fa-tiktok">&nbsp;</i>TikTok
-      </a>
-      <a class="link" href="https://youtube.com/@jayreddin2.0?si=LDdKo1FgpxFNMhUT" target="_blank">
-        <i class="fab fa-youtube">&nbsp;</i>Youtube
-      </a>
-      <a class="link" href="https://m.facebook.com/jayreddin89" target="_blank">
-        <i class="fab fa-facebook">&nbsp;</i>Facebook
-      </a>
-      <a class="link" href="https://www.instagram.com/jayreddin" target="_blank">
-        <i class="fab fa-instagram">&nbsp;</i>Instagram
-      </a>
-      <a class="link" href="https://www.facebook.com/Handyman.Dublin.Jamie" target="_blank">
-        <i class="fab fa-facebook">&nbsp;</i>Facebook Nixer Page
-      </a>
-      <a class="link" id="github-projects-btn" onclick="toggleGithubProjects()">
-        <i class="fab fa-github">&nbsp;</i>Github Projects
-      </a>
-      <div id="github-projects-container" style="display: none;">
-        <a class="link github-project" href="https://jayreddin.github.io/JamieAirToWater/" id="project1">Air To Water Search</a>
-        <a class="link github-project" href="https://jayreddin.github.io/PortfolioJamie/" id="project2">My Portfolio</a>
-        <a class="link github-project" href="https://github.com/jayreddin?tab=repositories" id="project3">All My Repositories</a>
-      </div>
-    </div>
+    </main>
 
-    <div id="hashtag">
-      #Be Kind 😂
-    </div>
+    <footer>
+      <div id="hashtag">
+        #Be Kind 😂
+      </div>
+    </footer>
   </body>
 </html>
