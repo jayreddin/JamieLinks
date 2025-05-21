@@ -27,7 +27,7 @@
     <script src="script.js" defer></script> 
   </head>
 
-  <body>
+  <body class="dark">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WH4LJLNW"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -43,7 +43,7 @@
 
     <header>
       <div id="profile-container">
-        <a id="profilePicture" href="#popup">
+        <a id="profilePicture" href="#">
           <img src="https://avatars.githubusercontent.com/u/13211423?s=400&u=e24e000a80ee1f75d60aaecc447d007e00f68980&v=4" alt="Jamie's profile portrait - developer from Dublin" width="150" height="150">
         </a>
         <div id="userName">
@@ -63,12 +63,12 @@
           <div class="popup-quote">
             Here for a good time, not a long time!!
           </div>
-          <a class="popup-close" onclick="history.back()">&times;</a>
+          <a class="popup-close" href="#">&times;</a>
         </div>
       </div>
 
       <div id="links">
-        <a class="link" id="about-me-btn" onclick="toggleElement('about-me-container')">
+        <a class="link" id="about-me-btn" href="#">
           <i class="fas fa-user">&nbsp;</i>About Me
         </a>
         <div id="about-me-container" style="display: none;" class="link about-me-text">
@@ -89,13 +89,96 @@
         <a class="link" href="https://www.facebook.com/Handyman.Dublin.Jamie" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-facebook">&nbsp;</i>Facebook Nixer Page
         </a>
-        <a class="link" id="github-projects-btn" onclick="toggleElement('github-projects-container')">
+        <a class="link" id="github-projects-btn" href="#">
           <i class="fab fa-github">&nbsp;</i>Github Projects
         </a>
         <div id="github-projects-container" style="display: none;">
           <a class="link github-project" href="https://jayreddin.github.io/JamieAirToWater/" target="_blank" rel="noopener noreferrer" id="project1">Air To Water Search</a>
           <a class="link github-project" href="https://jayreddin.github.io/PortfolioJamie/" target="_blank" rel="noopener noreferrer" id="project2">My Portfolio</a>
           <a class="link github-project" href="https://github.com/jayreddin?tab=repositories" target="_blank" rel="noopener noreferrer" id="project3">All My Repositories</a>
+        </div>
+        
+        <!-- New Feature - Contact Form -->
+        <a class="link" id="contact-form-btn" href="#">
+          <i class="fas fa-envelope">&nbsp;</i>Contact Me
+        </a>
+        <div id="contact-form-container" style="display: none;" class="link about-me-text">
+          <form id="contact-form" onsubmit="return submitContactForm(event)">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="form-submit-btn">Send Message</button>
+            <div id="form-status"></div>
+          </form>
+        </div>
+        
+        <!-- New Feature - Share Buttons -->
+        <a class="link" id="share-page-btn" href="#">
+          <i class="fas fa-share-alt">&nbsp;</i>Share This Page
+        </a>
+        <div id="share-buttons-container" style="display: none;" class="link about-me-text">
+          <div class="share-buttons">
+            <a href="#" onclick="shareOnPlatform('facebook')" class="share-btn facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" onclick="shareOnPlatform('twitter')" class="share-btn twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" onclick="shareOnPlatform('linkedin')" class="share-btn linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" onclick="shareOnPlatform('whatsapp')" class="share-btn whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" onclick="copyPageUrl()" class="share-btn copy">
+              <i class="fas fa-copy"></i>
+            </a>
+          </div>
+          <div id="share-status"></div>
+        </div>
+        
+        <!-- New Feature - Music Player -->
+        <a class="link" id="music-player-btn" href="#">
+          <i class="fas fa-music">&nbsp;</i>My Favorite Tunes
+        </a>
+        <div id="music-player-container" style="display: none;" class="link about-me-text">
+          <div class="music-player">
+            <div class="now-playing">
+              <img id="album-art" src="https://via.placeholder.com/150" alt="Album Art">
+              <div class="track-info">
+                <div id="track-title">Song Title</div>
+                <div id="track-artist">Artist</div>
+              </div>
+            </div>
+            <div class="controls">
+              <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+              <button id="play-btn"><i class="fas fa-play"></i></button>
+              <button id="next-btn"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="playlist">
+              <div class="playlist-item" data-src="https://example.com/song1.mp3" data-title="Song One" data-artist="Artist One" data-img="https://via.placeholder.com/150/FF5733">
+                <div class="playlist-title">Song One</div>
+                <div class="playlist-artist">Artist One</div>
+              </div>
+              <div class="playlist-item" data-src="https://example.com/song2.mp3" data-title="Song Two" data-artist="Artist Two" data-img="https://via.placeholder.com/150/33FF57">
+                <div class="playlist-title">Song Two</div>
+                <div class="playlist-artist">Artist Two</div>
+              </div>
+              <div class="playlist-item" data-src="https://example.com/song3.mp3" data-title="Song Three" data-artist="Artist Three" data-img="https://via.placeholder.com/150/5733FF">
+                <div class="playlist-title">Song Three</div>
+                <div class="playlist-artist">Artist Three</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
